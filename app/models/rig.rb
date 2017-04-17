@@ -8,4 +8,8 @@ class Rig < ApplicationRecord
     validates :name, :presence => true
     
     accepts_nested_attributes_for :items
+    
+    def item_count
+        items.count 
+    end
 end
