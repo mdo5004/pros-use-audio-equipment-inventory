@@ -1,4 +1,5 @@
 class Rig < ApplicationRecord
+    
     has_many :rig_items
     has_many :items, :through => :rig_items
     

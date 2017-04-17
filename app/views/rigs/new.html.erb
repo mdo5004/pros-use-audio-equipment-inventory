@@ -1,0 +1,16 @@
+<h1>New Rig</h1>
+<%= form_for @rig do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<%= f.label :venue %>
+<%= f.text_field :venue %><br>
+<%= f.label :use %>
+<%= f.select :use, ["Production","Recording","Other"] %><br>
+<%= f.fields_for :items do |item_f| %>
+Equipment:<%= item_f.collection_check_boxes :item_ids, Item.all, :id, :name %>
+<br>
+<%= item_f.label "Or name a new item" %>
+<%= item_f.text_field :name %>
+<% end %>
+<%= f.submit %>
+<% end %>
