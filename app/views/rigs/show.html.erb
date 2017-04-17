@@ -1,0 +1,12 @@
+<h1>Rig</h1>
+<%= @rig.name %>
+<%= @rig.venue %>
+<%= @rig.use %>
+
+<h2>Equipment</h2>
+<h4><%= @rig.item_count %> items:</h4>
+<ul>
+<% @rig.items.each do |item| %>
+<li><%= item.name %></li>
+<% end %>
+</ul>
