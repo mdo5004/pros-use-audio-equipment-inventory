@@ -1,4 +1,5 @@
-class User < ApplicationRecord
+class User < ApplicationRecord    
+    
     has_many :rigs
     has_many :items, :through => :rigs
     
@@ -8,7 +9,8 @@ class User < ApplicationRecord
     validates :name, :presence => true
     validates :email, :presence => true
     validates :email, :uniqueness => true
-#    validates :password, :presence => true
+    validates :password, :confirmation => true
+    validates :password_confirmation, :presence => true
     
     
 end
