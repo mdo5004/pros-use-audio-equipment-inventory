@@ -1,6 +1,6 @@
 class User < ApplicationRecord    
     
-    has_many :rigs
+    has_many :rigs, dependent: :destroy
     has_many :items, :through => :rigs
     
     enum role: [:user, :moderator, :admin]

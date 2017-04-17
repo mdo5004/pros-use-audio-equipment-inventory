@@ -2,9 +2,11 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
+        authorize @user
     end
     def create
         @user = User.new(user_params)
+        authorize @user
         if @user.save
             session[:user_id] = @user.id
             redirect_to user_path(@user)
@@ -14,9 +16,11 @@ class UsersController < ApplicationController
     end
     def edit
         @user = User.find(params[:id])
+        authorize @user
     end
     def update
         @user = User.find(params[:id]) 
+        authorize @user
         if @user.update(user_params)
             redirect_to user_path(@user)
         else
@@ -25,10 +29,12 @@ class UsersController < ApplicationController
     end
     def show
         @user = User.find(params[:id])
+        authorize @user
     end
     
     def index
         @users = User.all
+        authorize @users
     end
     private
     def user_params
