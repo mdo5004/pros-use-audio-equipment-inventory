@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :users do
         resources :rigs
     end
-    
+    resources :rigs
 end

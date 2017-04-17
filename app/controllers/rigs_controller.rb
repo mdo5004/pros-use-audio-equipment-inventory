@@ -6,10 +6,10 @@ class RigsController < ApplicationController
         @rig.items.build
     end
     def create
-        @rig = Rig.new(user_id: params[:user_id])
+        @rig = Rig.new(user_id: rig_params[:user_id])
         
         if @rig.update_attributes(rig_params)
-            redirect_to user_path(params[:user_id])
+            redirect_to user_path(@rig.user)
         else
             render :new
         end
