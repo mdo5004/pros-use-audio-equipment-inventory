@@ -5,6 +5,7 @@
 
 
 <h2>My Rigs</h2>
+<%= link_to "New Rig", new_user_rig_path(@user) %>
 <% @user.rigs.each do |rig| %>
 <%= link_to rig.name, rig_path(rig) %><br>
 <% end %>
