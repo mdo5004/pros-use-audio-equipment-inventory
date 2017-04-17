@@ -4,7 +4,7 @@ class CreateRigs < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :user_id
       t.string :venue
-      t.integer :use
+      t.string :use
 
       t.timestamps
     end
