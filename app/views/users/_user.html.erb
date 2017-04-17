@@ -1,0 +1,10 @@
+<div>
+    <ul>
+    <li><%=user.name %> <%= "ADMIN" if user.admin? %></li>
+    <li>email: <%=user.email %></li>
+    <li>title: <%=user.title %></li>
+    <li>location: <%=user.location %></li>
+    <li><%= link_to "Edit", edit_user_path(user)%></li>
+    </ul>
+    
+</div>
