@@ -1,0 +1,10 @@
+<h1>My Profile</h1>
+<%= @user.name %>
+<%= @user.title %>
+<%= @user.location %>
+
+
+<h2>My Rigs</h2>
+<% @user.rigs.each do |rig| %>
+<%= link_to rig.name, rig_path(rig) %><br>
+<% end %>
