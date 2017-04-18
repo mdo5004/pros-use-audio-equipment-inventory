@@ -15,5 +15,8 @@
 <%= f.number_field :year%><br>
 <%= f.label :link%><br>
 <%= f.text_field :link%><br>
+<%= f.label :rigs%><br>
+<%= f.collection_check_boxes :rig_ids, current_user.rigs, :id, :name %><br>
+    
 <%= f.submit%><br>
 <% end %>

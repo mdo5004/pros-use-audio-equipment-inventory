@@ -1,3 +1,4 @@
+require 'pry'
 class ItemsController < ApplicationController
     def new
         @item = Item.new #Rig.find(params[:rig_id]).items.build
@@ -6,7 +7,7 @@ class ItemsController < ApplicationController
     def create
         @item = Item.new(item_params)
         authorize @item
-        
+        binding.pry
         if @item.save
             if item_params[:rig_id]
                 redirect_to rig_item_path(item_params[:rig_id])
@@ -23,7 +24,7 @@ class ItemsController < ApplicationController
     def update
         @item = Item.find(params[:id])
         authorize @item
-
+        
         if @item.update_attributes(item_params)
             if item_params[:rig_id]
                 redirect_to rig_item_path(item_params[:rig_id])
