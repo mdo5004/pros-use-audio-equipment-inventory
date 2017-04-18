@@ -7,10 +7,13 @@ Rails.application.routes.draw do
     delete "/signout", to: "session#destroy"
     get "/signup", to: "users#new"
 
-    resources :items
+
 
     resources :users do
         resources :rigs
     end
-    resources :rigs
+    resources :items
+    resources :rigs do
+        resources :items
+    end
 end
