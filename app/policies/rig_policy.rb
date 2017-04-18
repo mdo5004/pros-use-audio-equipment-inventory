@@ -11,7 +11,7 @@ class RigPolicy < ApplicationPolicy
     end
     
     def index?
-        @viewer.admin? || @viewer.moderator?
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def show?
         @viewer.admin? || @viewer.moderator? || @rig.user == @viewer
@@ -20,10 +20,10 @@ class RigPolicy < ApplicationPolicy
         @viewer.admin? || @rig.user == @viewer
     end
     def new?
-        true
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def create?
-        true
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def destroy?
         @viewer.admin? || @rig.user == @viewer
