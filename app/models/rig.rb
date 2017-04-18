@@ -12,4 +12,8 @@ class Rig < ApplicationRecord
     def item_count
         items.count 
     end
+    
+    def user_name
+        user.name
+    end
 end
