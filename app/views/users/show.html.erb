@@ -1,4 +1,4 @@
-<h1>My Profile</h1>
+<h2>My Profile</h2>
 <%= @user.name %><br>
 <%= @user.title %><br>
 <%= @user.location %><br>
@@ -7,5 +7,12 @@
 <h2>My Rigs</h2>
 <% @user.rigs.each do |rig| %>
 <%= link_to rig.name, rig_path(rig) %><br>
-<% end %>
+<% end %><br>
 <%= link_to "New Rig...", new_user_rig_path(@user) %><br>
+
+
+<h2>My Equipment</h2>
+<% @user.items.each do |item| %>
+<%= link_to item.name, item_path(item) %><br>
+<% end %><br>
+<%= link_to "New Item...", new_item_path %><br>
