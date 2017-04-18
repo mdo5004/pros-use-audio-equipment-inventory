@@ -1,4 +1,17 @@
 <%= form_for user do |f|%>
+
+<% if user.errors.any? %>
+<div id="error_explanation">
+    <h4><%= pluralize(user.errors.count, "error") %> prohibited this task from being saved:</h4>
+
+    <ul>
+        <% user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
 <%= f.label :name %><br>
 <%= f.text_field :name %><br>
 <%= f.label :email %><br>

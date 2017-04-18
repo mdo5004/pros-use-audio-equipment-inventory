@@ -1,11 +1,11 @@
 <h1>My Profile</h1>
-<%= @user.name %>
-<%= @user.title %>
-<%= @user.location %>
-
+<%= @user.name %><br>
+<%= @user.title %><br>
+<%= @user.location %><br>
+<%= link_to "Edit Profile...", edit_user_path(@user) %>
 
 <h2>My Rigs</h2>
-<%= link_to "New Rig", new_user_rig_path(@user) %>
 <% @user.rigs.each do |rig| %>
 <%= link_to rig.name, rig_path(rig) %><br>
 <% end %>
+<%= link_to "New Rig...", new_user_rig_path(@user) %><br>
