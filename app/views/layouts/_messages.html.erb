@@ -1,4 +1,4 @@
-<div class="alert alert-success" role="alert"><%=flash[:success]%></div>
-<div class="alert alert-info" role="alert"><%=flash[:info]%></div>
-<div class="alert alert-warning" role="alert"><%=flash[:warning]%></div>
-<div class="alert alert-danger" role="alert"><%=flash[:danger]%></div>
+<%= content_tag(:div, flash[:success], {class:["alert", "alert-success"], role: "alert"}) if flash[:success] %>
+<%= content_tag(:div, flash[:info], {class:["alert", "alert-info"], role: "alert"}) if flash[:info] %>
+<%= content_tag(:div, flash[:warning], {class:["alert", "alert-warning"], role: "alert"}) if flash[:warning] %>
+<%= content_tag(:div, flash[:danger], {class:["alert", "alert-danger"], role: "alert"}) if flash[:danger] %>

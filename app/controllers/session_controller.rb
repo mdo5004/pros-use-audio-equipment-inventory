@@ -5,11 +5,12 @@ class SessionController < ApplicationController
 #        raise params.inspect
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
-                    
+            flash[:success] = "Successfully logged in!"
             session[:user_id] = @user.id
             redirect_to root_path 
         else
-            render :new, :alert => "Could not log in"
+            flash[:danger] = "Could not log in"
+            render :new 
         end
     end
     

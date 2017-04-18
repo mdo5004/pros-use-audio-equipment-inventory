@@ -1,4 +1,15 @@
 <h1>Sign In</h1>
+<% if @user && @user.errors.any? %>
+<div id="error_explanation">
+    <h4><%= pluralize(@user.errors.count, "error") %> prohibited this task from being saved:</h4>
+
+    <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
 <%= form_tag signin_path, method:"post" do %>
 <%= label_tag :email %><br>
 <%= text_field_tag :email %><br>
