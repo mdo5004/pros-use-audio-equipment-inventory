@@ -1,16 +1,16 @@
 class RigsController < ApplicationController
     def index
         @rigs = Rig.all
-        # authorize @rig
+         authorize @rig
     end
     def new
         @rig = Rig.new(user_id: params[:user_id])
         @rig.items.build
-        # authorize @rig
+         authorize @rig
     end
     def create
         @rig = Rig.new(user_id: rig_params[:user_id])
-        # authorize @rig
+         authorize @rig
         if @rig.update_attributes(rig_params)
             redirect_to user_path(@rig.user)
         else
@@ -19,11 +19,11 @@ class RigsController < ApplicationController
     end
     def edit
         @rig = Rig.find(params[:id])
-        # authorize @rig
+         authorize @rig
     end
     def update
         @rig = Rig.find(params[:id])
-        # authorize @rig
+         authorize @rig
         if rig_params[:name].empty?
             render :edit, :alert => "Rig must have a name"
         else
@@ -36,12 +36,12 @@ class RigsController < ApplicationController
     end
     def show
         @rig = Rig.find(params[:id])
-        # authorize @rig
+         authorize @rig
 
     end
     def destroy
         @rig = Rig.find(params[:id])
-        # authorize @rig
+         authorize @rig
         @rig.destroy
     end
 
