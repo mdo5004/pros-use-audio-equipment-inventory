@@ -1,4 +1,4 @@
-michael = User.create(name: "Michael", email:"michaeldavidoconnell@gmail.com", password:"password",password_confirmation:"password", role:2)
+michael = User.create(name: "Michael O'Connell", email:"michaeldavidoconnell@gmail.com", password:"password",password_confirmation:"password", role:2)
 home_rig = michael.rigs.create(name:"Home rig",venue:"Home",use:"Recording" )
 church_rig = michael.rigs.create(name:"Church rig",venue:"Church of the Good Shepherd, Durham NC",use:"Production")
 
@@ -26,3 +26,15 @@ church_rig.items.create(name:"Midas M3",
                     classification:"Mixer",
                     manufacturer:"Midas",
                     make:"M3",year:2016)
+
+ryan = User.create(name:"Ryan O'Connell", email:"ryan@ryanomusic.com", password:"password", role:0)
+home_rig = ryan.rigs.create(name:"Home rig", venue:"Home", use:"Recording")
+road_rig = ryan.rigs.create(name:"Road rig", venue:"Mobile", use:"Recording")
+home_rig.items << Item.find_or_create_by(name:"27\" iMac")
+home_rig.items.create(name:"KORG SP-280", classification:"Synthesizer", manufacturer:"KORG", make:"SP-280", year:2013)
+road_rig.items << Item.find_or_create_by(name:"Yeti Microphone")
+road_rig.items.create(name:"M-Audio Keystation", classification:"Controller", manufacturer:"M-Audio", make:"Keystation 49", year:2016)
+road_rig.items.create(name:"15\" MacBook Pro",
+                    classification:"Computer",
+                    manufacturer:"Apple Inc.",
+                    make:"MacBook Pro",year:2012)
