@@ -1,16 +1,6 @@
 <%= form_for rig do |f| %>
 
-<% if rig.errors.any? %>
-<div id="error_explanation">
-    <h4><%= pluralize(rig.errors.count, "error") %> prohibited this task from being saved:</h4>
-
-    <ul>
-        <% rig.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-</div>
-<% end %>
+<%= render partial:"layouts/errors", locals: {record: rig} %>
 
 <%= f.hidden_field :user_id %>
 
