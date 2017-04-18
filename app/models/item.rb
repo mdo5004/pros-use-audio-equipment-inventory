@@ -5,6 +5,9 @@ class Item < ApplicationRecord
     validates :name, :presence => true
     validates :manufacturer, :presence => true
 
+    def count
+        RigItem.joins(:item).where(:item_id => id).count()
+    end
     def self.most_popular
         frequencies = RigItem.joins(:item).group(:item_id).count()
         sorted_freqs = frequencies.sort { |l,r| r[1] <=> l[1] }
@@ -19,6 +22,6 @@ class Item < ApplicationRecord
         else
             top_ten_ids = sorted_freqs.collect { |f| f[0] }
         end
-        Item.where(:id => top_ten_ids).collect {|i| i.name}
+        Item.where(:id => top_ten_ids)
     end
 end

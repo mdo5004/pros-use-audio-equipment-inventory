@@ -1,0 +1,15 @@
+<h4>Top Equipment</h4>
+<table class="table table-striped">
+    <thead>
+        <th>#</th>
+        <th>Item </th>
+        <th>Rigs </th>
+    </thead>
+    <% Item.top_ten.each_with_index do |item,i| %>
+    <tr>
+        <td><%= i+1 %>. </td>
+        <td><%= item.name %></td>
+        <td><%= item.count %></td>
+    </tr>
+    <% end %>
+</table>
