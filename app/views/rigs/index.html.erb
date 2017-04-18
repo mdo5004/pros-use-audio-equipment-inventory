@@ -1,0 +1,7 @@
+<h1>All Rigs</h1>
+<ul>
+<% @rigs.each do |rig| %>
+<li><%= rig.user_name %> - <%= link_to rig.name, rig %></li>
+    
+<% end %>
+</ul>
