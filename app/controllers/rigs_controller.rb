@@ -11,6 +11,7 @@ class RigsController < ApplicationController
     def create
         @rig = Rig.new(user_id: rig_params[:user_id])
          authorize @rig
+#        raise rig_params.inspect
         if @rig.update_attributes(rig_params)
             redirect_to user_path(@rig.user)
         else
@@ -47,6 +48,6 @@ class RigsController < ApplicationController
 
     private
     def rig_params
-        params.require(:rig).permit(:user_id,:name,:venue,:use,:items => {"item_ids":[]},:items => :name) 
+        params.require(:rig).permit(:user_id,:name,:venue,:use,:item_ids => [], :items_attributes => [:name]) 
     end
 end

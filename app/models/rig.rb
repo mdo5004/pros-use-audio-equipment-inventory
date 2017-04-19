@@ -9,6 +9,13 @@ class Rig < ApplicationRecord
     
     accepts_nested_attributes_for :items
     
+    def items_attributes=(items)
+        items.each do |item|
+            new_item = Item.find_or_create_by(name: item[:name])
+            self.items << new_item
+        end
+    end
+    
     def item_count
         items.count 
     end
