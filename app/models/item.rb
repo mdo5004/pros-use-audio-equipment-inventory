@@ -4,11 +4,11 @@ class Item < ApplicationRecord
 
     validates :name, :presence => true
     validates :manufacturer, :presence => true
-    
+
     accepts_nested_attributes_for :rigs
-    
-    
-    
+
+
+
     def rig_ids=(ids)
         ids.each do |id|
             if !id.empty?
@@ -33,6 +33,7 @@ class Item < ApplicationRecord
         else
             top_ten_ids = sorted_freqs.collect { |f| f[0] }
         end
-        Item.where(:id => top_ten_ids)
+        
+        items = Item.where(:id => top_ten_ids)
     end
 end
