@@ -4,17 +4,21 @@ class ItemsController < ApplicationController
         authorize @item
     end
     def create
-        @item = Item.new(item_params)
+        @item = Item.find_or_initialize_by(name: item_params[:name])
         authorize @item
-        binding.pry
+
+        @item.attributes= item_params 
+
         if @item.save
-            if item_params[:rig_id]
-                redirect_to rig_item_path(item_params[:rig_id])
+            if item_params[:rig_ids]
+                redirect_to root_path
             else
-                redirect_to user_path(current_user)
+                raise @item.inspect
+                render :new, flash[:warning] => "Item must belong to at least one rig"
             end
         else
-            render :new, flash[:alert] => "Item not created"
+            raise @item.inspect
+            render :new, flash[:warning] => "Item not created"
         end
     end
     def edit
@@ -23,7 +27,7 @@ class ItemsController < ApplicationController
     def update
         @item = Item.find(params[:id])
         authorize @item
-        
+
         if @item.update_attributes(item_params)
             if item_params[:rig_id]
                 redirect_to rig_item_path(item_params[:rig_id])
@@ -51,6 +55,6 @@ class ItemsController < ApplicationController
 
     private
     def item_params
-        params.require(:item).permit(:rig_id, :name, :classification, :manufacturer, :make, :model, :year, :link) 
+        params.require(:item).permit(:rig_id, :name, :classification, :manufacturer, :make, :model, :year, :link, :rig_ids => []) 
     end
 end

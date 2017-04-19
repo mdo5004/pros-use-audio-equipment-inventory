@@ -7,6 +7,15 @@ class Item < ApplicationRecord
     
     accepts_nested_attributes_for :rigs
     
+    
+    
+    def rig_ids=(ids)
+        ids.each do |id|
+            if !id.empty?
+                self.rigs << Rig.find(id)
+            end
+        end
+    end
     def count
         RigItem.joins(:item).where(:item_id => id).count()
     end

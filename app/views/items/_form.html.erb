@@ -1,6 +1,8 @@
-<%= render partial:"layouts/errors", locals: {record: item} %>
+
 <%= form_for item do |f| %>
-<%= f.hidden_field :rig_ids, value: rig_id %><br>
+
+<%= render partial:"layouts/errors", locals: {record: item} %>
+
 <%= f.label "Name*"%><br>
 <%= f.text_field :name%><br>
 <%= f.label "Manufacturer*" %><br>
@@ -15,9 +17,9 @@
 <%= f.number_field :year%><br>
 <%= f.label :link%><br>
 <%= f.text_field :link%><br>
-<%= f.label :rigs%><br>
+<%= f.label "Rigs*"%><br>
 <div class="input-group">
-<%= f.collection_check_boxes :rig_ids, current_user.rigs, :id, :name,{checked: rig_id || rig_ids } %><br>
+<%= f.collection_check_boxes :rig_ids, current_user.rigs, :id, :name,{checked: rig_id} %><br>
 </div>
 <%= f.submit%><br>
 <% end %>
