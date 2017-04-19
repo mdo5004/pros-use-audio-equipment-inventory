@@ -17,7 +17,7 @@
 <%= f.text_field :link%><br>
 <%= f.label :rigs%><br>
 <div class="input-group">
-<%= f.collection_check_boxes :rig_ids, current_user.rigs, :id, :name,{checked: rig_id} %><br>
+<%= f.collection_check_boxes :rig_ids, current_user.rigs, :id, :name,{checked: rig_id || rig_ids } %><br>
 </div>
 <%= f.submit%><br>
 <% end %>

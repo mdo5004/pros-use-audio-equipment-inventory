@@ -1,4 +1,3 @@
-require 'pry'
 class ItemsController < ApplicationController
     def new
         @item = Item.new #Rig.find(params[:rig_id]).items.build

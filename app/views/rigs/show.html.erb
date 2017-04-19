@@ -1,7 +1,7 @@
-<h1>Rig</h1>
-<%= @rig.name %>
-<%= @rig.venue %>
-<%= @rig.use %>
+<h1><%= @rig.name %></h1>
+
+Venue: <%= @rig.venue %><br>
+Use: <%= @rig.use %><br>
 
 <h2>Equipment</h2>
 <h4><%= @rig.item_count %> items:</h4>
@@ -9,4 +9,5 @@
 <% @rig.items.each do |item| %>
 <li><%= item.name %></li>
 <% end %>
+<li><%= link_to "New Item...", new_rig_item_path(@rig) %></li>
 </ul>
