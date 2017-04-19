@@ -4,7 +4,9 @@ class Item < ApplicationRecord
 
     validates :name, :presence => true
     validates :manufacturer, :presence => true
-
+    
+    accepts_nested_attributes_for :rigs
+    
     def count
         RigItem.joins(:item).where(:item_id => id).count()
     end
