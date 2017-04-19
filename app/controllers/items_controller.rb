@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
         authorize @item
 
         @item.attributes= item_params 
-
+        
         if @item.save
             if item_params[:rig_ids]
                 redirect_to root_path
