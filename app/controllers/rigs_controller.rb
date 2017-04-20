@@ -1,7 +1,7 @@
 class RigsController < ApplicationController
     def index
         @rigs = Rig.all
-         authorize @rig
+         authorize @rigs
     end
     def new
         @rig = Rig.new(user_id: params[:user_id])
@@ -48,6 +48,6 @@ class RigsController < ApplicationController
 
     private
     def rig_params
-        params.require(:rig).permit(:user_id,:name,:venue,:use,:item_ids => [], :items_attributes => [:name]) 
+        params.require(:rig).permit(:user_id,:name,:venue,:use,:item_ids => [], :items_attributes => [:name, :manufacturer]) 
     end
 end

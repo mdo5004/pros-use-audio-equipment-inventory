@@ -11,7 +11,8 @@ class Rig < ApplicationRecord
     
     def items_attributes=(items)
         items.each do |item|
-            new_item = Item.find_or_create_by(name: item[:name])
+            
+            new_item = Item.find_or_create_by(item[1])
             self.items << new_item
         end
     end
