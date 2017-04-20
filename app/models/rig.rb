@@ -7,13 +7,12 @@ class Rig < ApplicationRecord
 
     validates :name, :presence => true
     
-    accepts_nested_attributes_for :items
+    accepts_nested_attributes_for :items, reject_if: proc { |attributes| attributes['title'].blank? }
     
     def items_attributes=(items)
         items.each do |item|
-            
             new_item = Item.find_or_create_by(item[1])
-            self.items << new_item
+            self.items << new_item unless self.items.include? (new_item)
         end
     end
     

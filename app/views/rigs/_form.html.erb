@@ -10,13 +10,15 @@
 <%= f.text_field :venue %><br>
 <%= f.label :use %>
 <%= f.select :use, ["Production","Recording","Other"] %><br>
-Equipment:<%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
-<br>
-<%= f.fields_for :items do |item_f| %>
-<%= item_f.label "Or name a new item" %>
-<%= item_f.text_field :name %>
-<%= item_f.label :manufacturer %>
-<%= item_f.text_field :manufacturer %>
+<% if !editing %>
+    Equipment:<%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
+    <br>
+    <%= f.fields_for :items do |item_f| %>
+    <br><%= item_f.label "Or name a new item" %>
+    <%= item_f.text_field :name %>
+    <%= item_f.label :manufacturer %>
+    <%= item_f.text_field :manufacturer %>
+    <% end %>
 <% end %>
 <%= f.submit %>
 <% end %>
