@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     resources :rigs do
         resources :items
     end
+
 end

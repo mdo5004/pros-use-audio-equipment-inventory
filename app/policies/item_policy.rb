@@ -26,6 +26,6 @@ class ItemPolicy < ApplicationPolicy
         @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def destroy?
-        @viewer.admin? || @item.user == @viewer
+        @viewer.admin?
     end
 end

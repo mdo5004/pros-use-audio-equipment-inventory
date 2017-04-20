@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
         authorize @item
 
         @item.attributes= item_params 
-        
+
         if @item.save
             if item_params[:rig_ids]
                 redirect_to root_path
@@ -44,9 +44,19 @@ class ItemsController < ApplicationController
         authorize @item
     end
     def destroy
-        @item = Item.find(params[:id])
-        authorize @item
-        @item.destroy
+        if params[:rig_id]
+            # user trying to remove an item from a rig
+            @item = Item.find(params[:id])
+            @rig = Rig.find(params[:rig_id])
+            authorize @rig
+            @rig.items.delete(@item.id)
+            redirect_to request.referrer || root_path
+        else
+            #user trying to destroy an item completely
+            @item = Item.find(params[:id])
+            authorize @item
+            @item.destroy
+        end
     end
     def index
         @items = Item.all
