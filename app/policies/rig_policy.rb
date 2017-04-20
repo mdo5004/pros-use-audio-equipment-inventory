@@ -14,7 +14,7 @@ class RigPolicy < ApplicationPolicy
         @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def show?
-        @viewer.admin? || @viewer.moderator? || @rig.user == @viewer
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def edit?
         @viewer.admin? || @rig.user == @viewer
