@@ -12,7 +12,7 @@
 
 
 <h2>My Equipment</h2>
-<% @user.items.each do |item| %>
+<% @user.my_equipment.each do |item| %>
 <%= link_to item.name, item_path(item) %><br>
 <% end %><br>
 <%= link_to "New Item...", new_item_path %><br>

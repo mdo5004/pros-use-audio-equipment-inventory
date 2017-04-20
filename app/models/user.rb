@@ -12,5 +12,8 @@ class User < ApplicationRecord
     validates :password, :confirmation => true
 #    validates :password_confirmation, :presence => true
     
+    def my_equipment
+        items.uniq 
+    end
     
 end
