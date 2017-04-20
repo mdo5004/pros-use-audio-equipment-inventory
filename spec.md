@@ -15,6 +15,7 @@ Specs:
 * Items: name & manufacturer
 * Rigs: name
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+* Item.top_ten is a class level method that returns the top ten most popular items
 - [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
 - [x] Include signup (how e.g. Devise)
 * manual implementation
@@ -22,8 +23,8 @@ Specs:
 * manual implementation
 - [x] Include logout (how e.g. Devise)
 * manual implementation
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+* OmniAuth lets users log in with Facebook
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 * users/1/rigs
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
