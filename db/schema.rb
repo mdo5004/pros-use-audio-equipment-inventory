@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(version: 20170420134626) do
     t.string   "title"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "role",            default: 0
-    t.integer  "uid"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "role",                      default: 0
+    t.integer  "uid",             limit: 8
   end
 
 end

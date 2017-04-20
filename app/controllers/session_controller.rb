@@ -1,5 +1,8 @@
 class SessionController < ApplicationController
     def new
+        if logged_in?
+            redirect_to root_path
+        end
     end
     def create
         if auth_hash
@@ -7,6 +10,7 @@ class SessionController < ApplicationController
                 u.name = auth_hash['info']['name']
                 u.email = auth_hash['info']['email']
                 u.location = auth_hash['info']['location']
+                u.password = SecureRandom.hex(9)
             end
             user_authenticated = true
         else
