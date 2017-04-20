@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         redirect_to new_session_path unless logged_in?
     end 
     def user_not_authorized
-        flash[:alert] = "Access denied." 
+        flash[:warning] = "Access denied." 
         redirect_to(request.referrer || root_path)
     end
 end
