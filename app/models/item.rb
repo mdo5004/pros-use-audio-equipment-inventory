@@ -8,7 +8,6 @@ class Item < ApplicationRecord
     accepts_nested_attributes_for :rigs
 
 
-
     def rig_ids=(ids)
         ids.each do |id|
             if !id.empty?
@@ -35,5 +34,5 @@ class Item < ApplicationRecord
         end
         items = top_ten_ids.collect{ |f| Item.find(f) }
     end
-    
+     
 end
