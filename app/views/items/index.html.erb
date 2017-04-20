@@ -1,0 +1,21 @@
+<h1>Equipment</h1>
+<table class="table">
+      <thead class="thead-default">
+        <tr>
+            <th>Item</th>
+            <th>Manufacturer</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+       <% @items.each do |item| %>
+        <tr>
+            
+            <td><%=link_to item.name, item %></td>
+            <td><%=item.manufacturer%></td>
+            <td><%=item.year%></td>
+            
+        </tr>
+        <% end %>
+    </tbody>
+</table>
