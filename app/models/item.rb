@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-    has_many :rig_items
+    has_many :rig_items, dependent: :destroy
     has_many :rigs, :through => :rig_items    
 
     validates :name, :presence => true
@@ -35,4 +35,5 @@ class Item < ApplicationRecord
         end
         items = top_ten_ids.collect{ |f| Item.find(f) }
     end
+    
 end
