@@ -38,3 +38,11 @@ road_rig.items.create(name:"15\" MacBook Pro",
                     classification:"Computer",
                     manufacturer:"Apple Inc.",
                     make:"MacBook Pro",year:2012)
+
+kyle = User.create(name:"kyle",email:"kyle@cgs.com",password:"password",role:0)
+home_rig = kyle.rigs.create(name:"Home rig", venue:"Home", use:"Recording")
+road_rig = kyle.rigs.create(name:"Road rig", venue:"Mobile", use:"Recording")
+home_rig.items << Item.find_by(name:"27\" iMac")
+home_rig.items << Item.find_by(name:"KORG SP-280")
+road_rig.items << Item.find_by(name:"Yeti Microphone")
+road_rig.items << Item.find_by(name:"27\" iMac")
