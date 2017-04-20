@@ -33,7 +33,6 @@ class Item < ApplicationRecord
         else
             top_ten_ids = sorted_freqs.collect { |f| f[0] }
         end
-        
         items = top_ten_ids.collect{ |f| Item.find(f) }
     end
 end
