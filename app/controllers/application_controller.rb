@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!session[:user_id] 
     end
-    def requre_login
+    def require_login
         redirect_to new_session_path unless logged_in?
     end 
     def user_not_authorized
