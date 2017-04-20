@@ -19,7 +19,8 @@ class UsersController < ApplicationController
         authorize @user
     end
     def update
-        @user = User.find(params[:id]) 
+        @user = User.find(params[:id])
+        @user.authenticate(password: user_params[:old_password])
         authorize @user
         if @user.update(user_params)
             redirect_to user_path(@user)
@@ -39,5 +40,8 @@ class UsersController < ApplicationController
     private
     def user_params
         params.require(:user).permit(:name, :email, :password, :title, :location)
+    end
+    def old_password
+        params.permit(:old_password) 
     end
 end

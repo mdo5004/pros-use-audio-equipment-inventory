@@ -6,10 +6,19 @@
 <%= f.text_field :name %><br>
 <%= f.label :email %><br>
 <%= f.text_field :email %><br>
+<% if new %>
 <%= f.label :password %><br>
 <%= f.password_field :password %><br>
 <%= f.label :password_confirmation %><br>
 <%= f.password_field :password_confirmation %><br>
+<% else %>
+<%= label_tag "Current Password" %><br>
+<%= password_field_tag "old_password" %><br>
+<%= f.label "New Password" %><br>
+<%= f.password_field :password %><br>
+<%= f.label "Confirm New Password" %><br>
+<%= f.password_field :password_confirmation %><br>
+<% end %>
 <%= f.label :title %><br>
 <%= f.text_field :title %><br>
 <%= f.label :location %><br>
