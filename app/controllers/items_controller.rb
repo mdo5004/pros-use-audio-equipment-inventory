@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
             if item_params[:rig_id]
                 redirect_to rig_item_path(item_params[:rig_id])
             else
-                redirect_to user_path(current_user)
+                redirect_to request.referrer || root_path
             end        
         else
             render :edit
@@ -48,10 +48,12 @@ class ItemsController < ApplicationController
     def destroy
         if params[:rig_id]
             # user trying to remove an item from a rig
-            @item = Item.find(params[:id])
             @rig = Rig.find(params[:rig_id])
             authorize @rig
+            
+            @item = Item.find(params[:id])
             @rig.items.delete(@item.id)
+            
             redirect_to request.referrer || root_path
         else
             #user trying to destroy an item completely
