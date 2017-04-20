@@ -34,6 +34,6 @@ class Item < ApplicationRecord
             top_ten_ids = sorted_freqs.collect { |f| f[0] }
         end
         
-        items = Item.where(:id => top_ten_ids)
+        items = top_ten_ids.collect{ |f| Item.find(f) }
     end
 end
