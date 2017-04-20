@@ -7,7 +7,7 @@ Use: <%= @rig.use %><br>
 <h4><%= @rig.item_count %> items:</h4>
 <ul>
 <% @rig.items.each do |item| %>
-<li><%= link_to item.name, item_path(item) %> <%= link_to "(remove)", rig_item_path(@rig,item), method:"delete" %> </li>
+<li><%= link_to item.name, item_path(item) %> <%= link_to "(remove)", rig_item_path(@rig,item), method:"delete" if current_user == @rig.user %> </li>
 <% end %>
-<li><%= link_to "New Item...", new_rig_item_path(@rig) %></li>
+<%= content_tag "li", link_to("New Item...", new_rig_item_path(@rig)) if current_user == @rig.user %>
 </ul>
