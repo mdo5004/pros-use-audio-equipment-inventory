@@ -1,4 +1,10 @@
-<h1><%= @rig.name %> <small><%= link_to "edit", edit_rig_path(@rig)%> <%= link_to "delete", rig_path(@rig), method: "delete"%> </small></h1>
+<h1><%= @rig.name %> 
+
+<small><%= link_to "edit", edit_rig_path(@rig) if policy(@rig).edit? %> 
+<%= link_to "delete", rig_path(@rig), method: "delete" if policy(@rig).edit?%> 
+</small>
+
+</h1>
 
 Venue: <%= @rig.venue %><br>
 Use: <%= @rig.use %><br>
