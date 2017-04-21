@@ -49,6 +49,7 @@ class RigsController < ApplicationController
         @rig = Rig.find(params[:id])
         authorize @rig
         @rig.destroy
+        redirect_to root_path
     end
 
     private
