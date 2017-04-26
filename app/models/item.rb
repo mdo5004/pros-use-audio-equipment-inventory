@@ -11,7 +11,8 @@ class Item < ApplicationRecord
     def rig_ids=(ids)
         ids.each do |id|
             if !id.empty?
-                self.rigs << Rig.find(id)
+                rig = Rig.find_by(id: id)
+                self.rigs << rig unless (rig.empty? || self.rigs.include?(rig))
             end
         end
     end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'dotenv-rails', groups: [:development, :test]
+#gem 'dotenv-rails', groups: [:development, :test]
 
 git_source(:github) do |repo_name|
     repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -40,6 +40,7 @@ gem 'pundit'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console

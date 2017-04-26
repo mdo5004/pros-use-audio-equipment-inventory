@@ -29,16 +29,11 @@ class RigsController < ApplicationController
     def update
         @rig = Rig.find(params[:id])
         authorize @rig
-        
-#        if rig_params[:name].empty?
-#            render :edit, :warning => "Rig must have a name"
-#        else
             if @rig.update_attributes(rig_params)
                 redirect_to user_path(@rig.user)
             else
                 render :edit
             end
-#        end
     end
     def show
         @rig = Rig.find(params[:id])
