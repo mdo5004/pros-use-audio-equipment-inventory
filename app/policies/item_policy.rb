@@ -7,7 +7,7 @@ class ItemPolicy < ApplicationPolicy
     end
     
     def update?
-        @viewer.admin? || @viewer.moderator?
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     
     def index?
