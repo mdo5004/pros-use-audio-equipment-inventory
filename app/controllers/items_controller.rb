@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
             if item_params[:rig_id]
                 redirect_to rig_item_path(item_params[:rig_id])
             else
-                redirect_to request.referrer || root_path
+                redirect_to item_path(@item) || root_path
             end        
         else
             render :edit

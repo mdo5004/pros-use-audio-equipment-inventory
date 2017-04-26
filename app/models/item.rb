@@ -12,7 +12,7 @@ class Item < ApplicationRecord
         ids.each do |id|
             if !id.empty?
                 rig = Rig.find_by(id: id)
-                self.rigs << rig unless (rig.empty? || self.rigs.include?(rig))
+                self.rigs << rig unless (rig.nil? || self.rigs.include?(rig))
             end
         end
     end
