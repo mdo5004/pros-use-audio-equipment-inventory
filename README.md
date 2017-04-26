@@ -8,8 +8,11 @@
 
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+
+Pros Use... requires Ruby v. ~> 2.3 and Bundler v. ~> 1.14
+
+To install, clone this repository anywhere on your computer and run `bundle install`
 
 Things you may want to cover:
 
