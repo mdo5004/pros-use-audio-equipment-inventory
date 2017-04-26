@@ -17,7 +17,7 @@ class ItemPolicy < ApplicationPolicy
         @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def edit?
-        @viewer.admin? || @viewer.moderator?
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def new?
         @viewer.admin? || @viewer.moderator? || @viewer.user?
