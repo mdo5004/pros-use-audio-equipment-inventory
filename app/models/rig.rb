@@ -7,7 +7,7 @@ class Rig < ApplicationRecord
 
     validates :name, :presence => true
     
-    accepts_nested_attributes_for :items, reject_if: proc { |attributes| attributes['title'].blank? }
+#    accepts_nested_attributes_for :items, reject_if: proc { |attributes| attributes['title'].blank? }
     
     def items_attributes=(items)
         items.each do |item|

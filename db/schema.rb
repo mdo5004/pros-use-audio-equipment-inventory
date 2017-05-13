@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170420134626) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "classification"
@@ -46,10 +49,10 @@ ActiveRecord::Schema.define(version: 20170420134626) do
     t.string   "title"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "role",                      default: 0
-    t.integer  "uid",             limit: 8
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "role",            default: 0
+    t.bigint   "uid"
   end
 
 end

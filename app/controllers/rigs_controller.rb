@@ -5,9 +5,8 @@ class RigsController < ApplicationController
     end
     def new
         @rig = Rig.new(user_id: params[:user_id])
-        if @rig.items.empty?
-            @rig.items.build
-        end
+        @rig.items.build
+        
         authorize @rig
     end
     def create
