@@ -5,9 +5,12 @@
 <%= link_to "Edit Profile...", edit_user_path(@user) %>
 
 <h2>My Rigs</h2>
+<ul>
 <% @user.rigs.each do |rig| %>
-<%= rig.name %> <%= link_to "(quick view)", '#', {data: rig.id, class: "details-link"} %> <%= link_to "(edit)", user_rig_path(current_user,rig) %><br>
-<% end %><br>
+<li><%= rig.name %> <%= link_to "(quick view)", '#', {"data-id": rig.id, class: "details-link"} %> <%= link_to "(edit)", user_rig_path(current_user,rig) %></li>
+<% end %>
+</ul>
+<br>
 <%= link_to "New Rig...", new_user_rig_path(@user) %><br>
 
 
