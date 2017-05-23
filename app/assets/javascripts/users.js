@@ -6,8 +6,11 @@ function Item(id, name){
 $(function(){
     $('.details-link').on('click', function(event){
         event.preventDefault();
+        
         let id = this["dataset"]["id"]
-        let $node = $(this).parent();
+        let $node = $("#panel-heading-" + id)
+        
+        
         $.getJSON('/rigs/' + id, function(data){
             let items = data["items"]
             let item_array = []
@@ -18,7 +21,8 @@ $(function(){
             var source   = $("#list-template").html();
             var template = Handlebars.compile(source);
 //            debugger
-            $node.html(template({item: item_array}))    
+
+            $node.after(template({item: item_array}))    
         })
     })
 })
