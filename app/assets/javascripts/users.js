@@ -1,6 +1,11 @@
 $(function(){
     $('.details-link').on('click', function(event){
-        $.get()
-        $(this.parentElement).append()
+        let id = this["dataset"]["id"]
+        $.getJSON('/rigs/' + id, function(data){
+            let items = data["items"]
+            
+            $(this.parentElement).append()    
+        })
+        
     })
 })
