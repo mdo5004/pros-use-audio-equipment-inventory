@@ -6,7 +6,7 @@
 
 <h2>My Rigs</h2>
 <% @user.rigs.each do |rig| %>
-<%= link_to rig.name, user_rig_path(current_user,rig) %><br>
+<%= rig.name %> <%= link_to "(quick view)", '#', {data: rig.id, class: "details-link"} %> <%= link_to "(edit)", user_rig_path(current_user,rig) %><br>
 <% end %><br>
 <%= link_to "New Rig...", new_user_rig_path(@user) %><br>
 
