@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     get "/signup", to: "users#new"
     get '/auth/facebook/callback', to: 'session#create'
 
-
-
     resources :users do
         resources :rigs
     end

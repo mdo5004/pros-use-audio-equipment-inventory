@@ -6,13 +6,13 @@ class RigsController < ApplicationController
     def new
         @rig = Rig.new(user_id: params[:user_id])
         @rig.items.build
-        
+
         authorize @rig
     end
     def create
         @rig = Rig.new(rig_params)
         authorize @rig
-        
+
         if @rig.save
             redirect_to user_path(@rig.user)
         else
@@ -28,16 +28,19 @@ class RigsController < ApplicationController
     def update
         @rig = Rig.find(params[:id])
         authorize @rig
-            if @rig.update_attributes(rig_params)
-                redirect_to user_path(@rig.user)
-            else
-                render :edit
-            end
+        if @rig.update_attributes(rig_params)
+            redirect_to user_path(@rig.user)
+        else
+            render :edit
+        end
     end
     def show
         @rig = Rig.find(params[:id])
         authorize @rig
-
+        respond_to do |f|
+            f.html { render :show }
+            f.json { render json: @rig }
+        end
     end
     def destroy
         @rig = Rig.find(params[:id])
