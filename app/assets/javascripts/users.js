@@ -1,5 +1,6 @@
 $(function(){
     $('.details-link').on('click', function(event){
-        debugger
+        $.get()
+        $(this.parentElement).append()
     })
 })
