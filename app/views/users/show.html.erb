@@ -6,25 +6,27 @@
 
 <h2>My Rigs <small><%= link_to "New Rig...", new_user_rig_path(@user), {class:"btn btn-default", role:"button"} %></small></h2>
 <% @user.rigs.each do |rig| %>
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title"><%= rig.name %></h3>
     </div>
     <div class="panel-body">
-<%= link_to "Quick View", '#', {"data-id": rig.id, role: "button", class: "btn btn-default details-link"} %> <%= link_to "Edit", user_rig_path(current_user,rig), { role:"button", class: "btn btn-default"} %>
+        <%= link_to "Details", '#', {"data-id": rig.id, role: "button", class: "btn btn-default details-link"} %> <%= link_to "Edit", user_rig_path(current_user,rig), { role:"button", class: "btn btn-default"} %>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-
 </div>
 <% end %>
 
-
+<script id="list-template" type="text/x-handlebars-template">
+    <ul class="list-group">
+    {{#each item}}
+        <li class="list-group-item">{{name}}</li>
+    {{/each}}
+    </ul>
+</script>
+<script id="test-template" type="text/x-handlebars-template">
+    <h1>{{text}}</h1>
+</script>
 
 <h2>My Equipment</h2>
 <% @user.my_equipment.each do |item| %>

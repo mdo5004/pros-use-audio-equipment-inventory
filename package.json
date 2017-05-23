@@ -1,0 +1,27 @@
+{
+  "name": "pros-use-audio-equipment-inventory",
+  "version": "1.0.0",
+  "description": "# Demo [Check out the demo of Pros Use...](prosuse.herokuapp.com)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdo5004/pros-use-audio-equipment-inventory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdo5004/pros-use-audio-equipment-inventory/issues"
+  },
+  "homepage": "https://github.com/mdo5004/pros-use-audio-equipment-inventory#readme"
+}

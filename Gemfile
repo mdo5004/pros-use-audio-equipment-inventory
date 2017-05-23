@@ -39,6 +39,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
+gem 'handlebars_assets'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 

@@ -4,7 +4,7 @@
         <title>Pros Use... - Audio Equipment Inventory</title>
         <%= csrf_meta_tags %>
         <!-- Latest compiled and minified CSS -->
-        
+
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,14 +21,14 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-8"> 
-                    <!-- Left 2/3rds page-->
+                <div class="col-lg-8">
                     <%= yield %>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-lg-4">
                     <!-- Right 1/3rd page-->
                     <%= render "layouts/stats" %>
                 </div>
+
             </div>
         </div>
 
