@@ -9,7 +9,8 @@ function Item(id, name, manufacturer, classification, make, model, year, link){
     this.link = link;
 }
 
-$(function(){
+$(".users.show").ready(function(){
+    alert("Users.js")
     $('.details-link').on('click', function(event){
         event.preventDefault();
         let id = this["dataset"]["id"]

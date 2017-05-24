@@ -1,12 +1,29 @@
-<h1><%= @item.name %> <small><%= link_to "edit", edit_item_path(@item) if policy(@item).edit?%></small></h1>
-<div id="item-table"></div>
-<a href="#" class="btn btn-default nav-button" role="button" id="prev" data-prev="<%= @item.id - 1 %>">Prev</a>
+
+<div id="item-table">
+
+    <h1><%= @item.name %>
+    <a href="/items/<%= @item.id %>/edit" class="btn btn-success" role="button" id="edit">Edit</a>
+    </h1>
+<table class="table table-striped">
+<tr><td>Manufacturer</td><td><%= @item.manufacturer %></td></tr>
+<tr><td>Classification</td><td><%= @item.classification %></td></tr>
+<tr><td>Make</td><td><%= @item.make %></td></tr>
+<tr><td>Model</td><td><%= @item.model %></td></tr>
+<tr><td>Year</td><td><%= @item.year %></td></tr>
+<tr><td>Link</td><td><%= @item.link %></td></tr>
+</table>
+
+</div>
+<a href="#" class="btn btn-default nav-button" role="button" id="prev" data-prev="<%= @item.id - 1 %>" >Prev</a>
 <a href="#" class="btn btn-default nav-button" role="button" id="next" data-next="<%= @item.id + 1 %>" data-max="<%= @item.class.count %>">Next</a>
 
 
 
 
 <script id='table-template' type='text/x-handlebars-template'>
+<h1>{{name}}
+    <a href="/items/{{id}}/edit" class="btn btn-success" role="button" id="edit">Edit</a>
+    </h1>
 <table class="table table-striped">
 <tr><td>Manufacturer</td><td>{{manufacturer}}</td></tr>
 <tr><td>Classification</td><td>{{classification}}</td></tr>
