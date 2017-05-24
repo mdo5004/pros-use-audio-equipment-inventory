@@ -35,5 +35,6 @@ class Item < ApplicationRecord
         end
         items = top_ten_ids.collect{ |f| Item.find(f) }
     end
+
      
 end

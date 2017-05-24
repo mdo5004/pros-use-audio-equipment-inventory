@@ -7,8 +7,8 @@
 <tr><td>Year</td><td><%=@item.year%></td></tr>
 <tr><td>Link</td><td><%=@item.link%></td></tr>
 </table>
-<a href="#" class="btn btn-default" role="button" id="prev" data-prev="<%= @item.id - 1 %>">Prev</a>
-<a href="#" class="btn btn-default" role="button" id="next" data-next="<%= @item.id + 1 %>">Next</a>
+<a href="#" class="btn btn-default nav-button" role="button" id="prev" data-prev="<%= @item.id - 1 %>">Prev</a>
+<a href="#" class="btn btn-default nav-button" role="button" id="next" data-next="<%= @item.id + 1 %>" data-max="<%= @item.class.count %>">Next</a>
 
 
 
