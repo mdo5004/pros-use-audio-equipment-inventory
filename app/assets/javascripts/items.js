@@ -15,6 +15,7 @@ var max;
 $(function(){
     attachListeners();
     n = parseInt($("#next").data("next")) - 1;
+    displayItemData(n);
     max = $("#next").data("max");    
     updateButtons();
 })
