@@ -44,6 +44,10 @@ class ItemsController < ApplicationController
     def show
         @item = Item.find(params[:id])
         authorize @item
+        respond_to do |f|
+            f.html { render :show }
+            f.json { render json: @item }
+        end 
     end
     def destroy
         if params[:rig_id]

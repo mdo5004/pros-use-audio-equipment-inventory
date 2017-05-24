@@ -1,6 +1,12 @@
-function Item(id, name){
+function Item(id, name, manufacturer, classification, make, model, year, link){
     this.id = id;
     this.name = name;
+    this.manufacturer = manufacturer;
+    this.classification = classification;
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.link = link;
 }
 
 $(function(){
