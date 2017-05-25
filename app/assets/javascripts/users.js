@@ -20,7 +20,20 @@ $(".users.show").ready(function(){
         event.preventDefault();
         deleteRig(event.target);
     })
+    
+    $('#show-all-button').on('click',function(event){
+        event.preventDefault();
+        showAllRigs(event.target);
+    })
+    
 })
+
+function showAllRigs(e){
+    $.getJSON('/rigs', function(json){
+        
+    })
+    $("#show-all-button").text('Hide All')
+}
 
 function deleteRig(e){
     let id = e["dataset"]["id"]

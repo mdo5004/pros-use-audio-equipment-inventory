@@ -2,6 +2,10 @@ class RigsController < ApplicationController
     def index
         @rigs = Rig.all
         authorize @rigs
+        respond_to do |f|
+            f.html
+            f.json { render json: @rigs }
+        end
     end
     def new
         @rig = Rig.new(user_id: params[:user_id])

@@ -27,12 +27,16 @@
         <% end %>
 
         <script id="list-template" type="text/x-handlebars-template">
-    <ul class="list-group">
-    {{#each item}}
-        <li class="list-group-item">{{name}}</li>
-    {{/each}}
+            <ul class="list-group">
+            {{#each item}}
+                <li class="list-group-item"><a href="/items/{{id}}">{{name}}</a></li>
+            {{/each}}
             </ul>
         </script>
+
+        <div id="rigs-index">
+            <a href="#" id="show-all-button" role="button" class="btn btn-default show-all-button">Show All</a>
+        </div>
     </div>
     <div class="col-lg-6">
         <h2>My Equipment
