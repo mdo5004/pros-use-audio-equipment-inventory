@@ -27,7 +27,7 @@ function attachListeners(){
 function switchItem(event){
     id = event.currentTarget.dataset.id;
     let action = event.currentTarget.id;
-    
+    debugger
     $.getJSON(`/items/${id}/${action}`, function(json){
         console.log(json)
         var source = $('#table-template').html();
@@ -36,6 +36,8 @@ function switchItem(event){
         item = new ListItem(json)
         
         $('#item-table').html(template(item));
-        history.pushState(null, null,`/items/${id}`)
+        history.pushState(null, null,`/items/${item.id}`)
+    }).fail(function(jqxhr,status,error){
+        console.log(error)
     })
 }

@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     end
     def prev
         @item = Item.find(params[:id])
-        render json: @item.previous
+        render json: @item.prev
     end
     
     def new

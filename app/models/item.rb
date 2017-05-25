@@ -10,8 +10,8 @@ class Item < ApplicationRecord
     def next_item
         Item.where("id > ?", id).first || Item.first
     end
-    def previous
-        Item.where("id < ?", id).first || Item.last
+    def prev
+        Item.where("id < ?", id).last || Item.last
     end
     
     def rig_ids=(ids)
