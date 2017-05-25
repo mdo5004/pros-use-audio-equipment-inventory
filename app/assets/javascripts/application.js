@@ -15,5 +15,6 @@
 //= require handlebars.runtime
 //= require handlebars
 //= require jquery-readyselector
+//= require jquery-ui
 //= require_tree ./templates
 //= require_tree .

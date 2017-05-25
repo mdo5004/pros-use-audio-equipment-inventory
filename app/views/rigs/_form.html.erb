@@ -11,11 +11,14 @@
 <%= f.label :use %>
 <%= f.select :use, ["Production","Recording","Other"] %><br>
 <% if !editing %>
-    Equipment:<%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
-    <br>
+   <div class="ui-widget" id="equipment-autocomplete">
+    <%= label_tag "Equipment" %>
+    <%= text_field_tag "equipment" %>
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </div>
     <%= f.fields_for :items do |item_f| %>
     <br><%= item_f.label "Or name a new item" %>
-    <%= item_f.text_field :name %>
+    <%= item_f.text_field :name %><br>
     <%= item_f.label :manufacturer %>
     <%= item_f.text_field :manufacturer %>
     <% end %>

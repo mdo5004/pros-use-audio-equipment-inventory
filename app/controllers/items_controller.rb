@@ -79,6 +79,10 @@ class ItemsController < ApplicationController
     def index
         @items = Item.all
         authorize @items
+        respond_to do |f|
+            f.html
+            f.json {render json: @items}
+        end
     end
 
     private
