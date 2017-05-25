@@ -3,6 +3,8 @@
 <p><%= @user.title %></p>
 <p><%= @user.location %></p>
 <%= link_to "Edit Profile...", edit_user_path(@user) %>
+<div class="row">
+<div class="col-lg-6">
 
 <h2>My Rigs <small><%= link_to "New Rig...", new_user_rig_path(@user), {class:"btn btn-default", role:"button"} %></small></h2>
 <% @user.rigs.each do |rig| %>
@@ -29,10 +31,16 @@
     {{/each}}
     </ul>
 </script>
-
-
-<h2>My Equipment</h2>
+</div>
+<div class="col-lg-6">
+<h2>My Equipment
+<small><%= link_to "New Item...", new_item_path, {class:"btn btn-default", role:"button"} %>
+</small>
+</h2>
+<table class="table table-striped">
 <% @user.my_equipment.each do |item| %>
-<%= link_to item.name, item_path(item) %><br>
-<% end %><br>
-<%= link_to "New Item...", new_item_path %><br>
+<tr><td><%= link_to item.name, item_path(item) %></td></tr>
+<% end %>
+</table>
+</div>
+</div>
