@@ -24,6 +24,7 @@ function showAllRigs(e){
         
         var source   = $("#rigs-template").html();
         var template = Handlebars.compile(source);
+        debugger
         $node.html(template({rig: rig_array}))
         
     })
