@@ -12,7 +12,6 @@ class RigsController < ApplicationController
     def create
         @rig = Rig.new(rig_params)
         authorize @rig
-
         if @rig.save
             redirect_to user_path(@rig.user)
         else
@@ -51,6 +50,6 @@ class RigsController < ApplicationController
 
     private
     def rig_params
-        params.require(:rig).permit(:user_id,:name,:venue,:use,:item_ids => [], :items_attributes => [:name, :manufacturer, :id]) 
+        params.require(:rig).permit(:user_id,:name,:venue,:use, :item_ids => [], :items_attributes => [:name, :manufacturer, :id]) 
     end
 end

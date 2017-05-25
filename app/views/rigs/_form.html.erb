@@ -1,24 +1,25 @@
-<%= form_for rig do |f| %>
+<%= simple_form_for(rig, html: { class: 'form-horizontal' }) do |f| %>
 
 <%= render partial:"layouts/errors", locals: {record: rig} %>
 
 <%= f.hidden_field :user_id %>
 
-<%= f.label :name %>
-<%= f.text_field :name %><br>
-<%= f.label :venue %>
-<%= f.text_field :venue %><br>
-<%= f.label :use %>
-<%= f.select :use, ["Production","Recording","Other"] %><br>
+<%= f.input :name %>
+<%= f.input :venue %>
+<%= f.input :use, collection: ["Production","Recording","Other"] %><br>
+
 <% if !editing %>
-    Equipment:<%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
+    <h3>Equipment:</h3>
+    <p>Select multiple with Ctrl (PC) or Cmd (Mac)</p>
+    <%= f.association :items%>
     <br>
     <%= f.fields_for :items do |item_f| %>
-    <br><%= item_f.label "Or name a new item" %>
-    <%= item_f.text_field :name %>
-    <%= item_f.label :manufacturer %>
-    <%= item_f.text_field :manufacturer %>
+    <h3>Or name a new item:</h3>
+    <br><%= item_f.input :name, required: false %>
+    
+    <%= item_f.input :manufacturer, required: false %>
+    
     <% end %>
 <% end %>
-<%= f.submit %>
+<%= f.button :submit %>
 <% end %>
