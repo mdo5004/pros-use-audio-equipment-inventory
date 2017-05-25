@@ -1,14 +1,3 @@
-function Item(id, name, manufacturer, classification, make, model, year, link){
-    this.id = id;
-    this.name = name;
-    this.manufacturer = manufacturer;
-    this.classification = classification;
-    this.make = make;
-    this.model = model;
-    this.year = year;
-    this.link = link;
-}
-
 $(".users.show").ready(function(){
 
     $('.details-link').on('click', function(event){
@@ -20,16 +9,22 @@ $(".users.show").ready(function(){
         event.preventDefault();
         deleteRig(event.target);
     })
-    
+
     $('#show-all-button').on('click',function(event){
         event.preventDefault();
         showAllRigs(event.target);
     })
-    
+
 })
 
 function showAllRigs(e){
-    $.getJSON('/rigs', function(json){
+    $.getJSON('/rigs', function(data){
+        let $node = $("#rigs-index")
+        let rig_array = concatItems(data,Rig);
+        
+        var source   = $("#rigs-template").html();
+        var template = Handlebars.compile(source);
+        $node.html(template({rig: rig_array}))
         
     })
     $("#show-all-button").text('Hide All')
@@ -45,7 +40,7 @@ function deleteRig(e){
     }).done(function(msg) {
         $("#panel-" + id).remove();
     }).fail(function(jqxhr, textStatus, error){
-   
+
         alert("Request failed: " + textStatus)
     })
 }
@@ -59,18 +54,25 @@ function toggleDetails(e){
         e.text = "Hide Details";
 
         $.getJSON('/rigs/' + id, function(data){
-            let items = data["items"]
-            let item_array = []
-            items.forEach(function(item){
-                var i = new Item(item["id"],item["name"])
-                item_array.push(i)
-            })
+
             var source   = $("#list-template").html();
             var template = Handlebars.compile(source);
+            let item_array = concatItems(data["items"],Item);
             $node.html(template({item: item_array}))    
         })
     } else {
         e.text = "Show Details";
         $node.html('')
     }
+}
+
+function concatItems(items,model){
+    var item_array = []
+
+    items.forEach(function(item){
+        var i = new model(item)
+        console.log(i)
+        item_array.push(i)
+    })
+    return item_array
 }

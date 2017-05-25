@@ -1,4 +1,4 @@
-function ListItem(new_item){
+function Item(new_item){
     this.id = new_item.id
     this.name = new_item.name
     this.manufacturer = new_item.manufacturer
@@ -33,7 +33,7 @@ function switchItem(event){
         var source = $('#table-template').html();
         var template = Handlebars.compile(source);
         
-        item = new ListItem(json)
+        item = new Item(json)
         
         $('#item-table').html(template(item));
         history.pushState(null, null,`/items/${item.id}`)

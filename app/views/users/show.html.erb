@@ -37,6 +37,14 @@
         <div id="rigs-index">
             <a href="#" id="show-all-button" role="button" class="btn btn-default show-all-button">Show All</a>
         </div>
+        <script id="rigs-template" type="text/x-handlebars-template">
+        <h2>All Rigs</h2>
+        <ul class="list-group">
+        {{#each rig}}
+        <li class="list-group-item"><a href="/rigs/{{id}}">{{name}}</a></li>
+        {{/each}}
+            </ul>
+        </script>
     </div>
     <div class="col-lg-6">
         <h2>My Equipment
