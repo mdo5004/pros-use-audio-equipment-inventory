@@ -45,7 +45,10 @@ class RigsController < ApplicationController
         @rig = Rig.find(params[:id])
         authorize @rig
         @rig.destroy
-        redirect_to root_path
+        respond_to do |f|
+            f.html {redirect_to root_path}
+            f.js {return true}
+        end
     end
 
     private

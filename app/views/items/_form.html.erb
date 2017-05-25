@@ -1,4 +1,4 @@
-
+<div class="col-lg-8">
 <%= form_for item do |f| %>
 
 <%= render partial:"layouts/errors", locals: {record: item} %>
@@ -24,3 +24,7 @@
 <%= f.submit%><br>
 <% end %>
 <p>* required field</p>
+</div>
+<div class="col-lg-4">
+<%= render "layouts/stats" %>
+</div>

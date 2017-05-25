@@ -4,43 +4,45 @@
 <p><%= @user.location %></p>
 <%= link_to "Edit Profile...", edit_user_path(@user) %>
 <div class="row">
-<div class="col-lg-6">
+    <div class="col-lg-6">
 
-<h2>My Rigs <small><%= link_to "New Rig...", new_user_rig_path(@user), {class:"btn btn-default", role:"button"} %></small></h2>
-<% @user.rigs.each do |rig| %>
+        <h2>My Rigs <small><%= link_to "New Rig...", new_user_rig_path(@user), {class:"btn btn-default", role:"button"} %></small></h2>
+        <% @user.rigs.each do |rig| %>
 
-<div class="panel panel-default">
-    <div class="panel-heading" id="panel-heading-<%= rig.id %>">
-        <h3 class="panel-title"><%= rig.name %></h3>
-    </div>
-    <div class="panel-body">
-    <p>Venue: <%= rig.venue %></p>
-    <p>Use: <%= rig.use %></p>
-    </div>
-    <span id="panel-span-<%= rig.id %>"></span>
-    <div class="panel-footer">
-        <%= link_to "Show Details", '#', {"data-id": rig.id, role: "button", class: "btn btn-default details-link"} %> <%= link_to "Edit", user_rig_path(current_user,rig), { role:"button", class: "btn btn-default"} %>
-    </div>
-</div>
-<% end %>
+        <div class="panel panel-default" id="panel-<%= rig.id %>">
+            <div class="panel-heading" id="panel-heading-<%= rig.id %>">
+                <h3 class="panel-title"><%= rig.name %></h3>
+            </div>
+            <div class="panel-body" id="panel-body-<%= rig.id %>">
+                <p>Venue: <%= rig.venue %></p>
+                <p>Use: <%= rig.use %></p>
+            </div>
+            <span id="panel-span-<%= rig.id %>"></span>
+            <div class="panel-footer" id="panel-footer-<%= rig.id %>">
+                <%= link_to "Show Details", '#', {"data-id": rig.id, role: "button", class: "btn btn-default details-link"} %> 
+                <%= link_to "Edit", user_rig_path(current_user,rig), { role:"button", class: "btn btn-default"} %>
+                <%= link_to "Delete", "#", {"data-id": rig.id, role: "button", class: "btn btn-danger delete-link"} %>
+            </div>
+        </div>
+        <% end %>
 
-<script id="list-template" type="text/x-handlebars-template">
+        <script id="list-template" type="text/x-handlebars-template">
     <ul class="list-group">
     {{#each item}}
         <li class="list-group-item">{{name}}</li>
     {{/each}}
-    </ul>
-</script>
-</div>
-<div class="col-lg-6">
-<h2>My Equipment
-<small><%= link_to "New Item...", new_item_path, {class:"btn btn-default", role:"button"} %>
-</small>
-</h2>
-<table class="table table-striped">
-<% @user.my_equipment.each do |item| %>
-<tr><td><%= link_to item.name, item_path(item) %></td></tr>
-<% end %>
-</table>
-</div>
+            </ul>
+        </script>
+    </div>
+    <div class="col-lg-6">
+        <h2>My Equipment
+            <small><%= link_to "New Item...", new_item_path, {class:"btn btn-default", role:"button"} %>
+            </small>
+        </h2>
+        <table class="table table-striped">
+            <% @user.my_equipment.each do |item| %>
+            <tr><td><%= link_to item.name, item_path(item) %></td></tr>
+            <% end %>
+        </table>
+    </div>
 </div>

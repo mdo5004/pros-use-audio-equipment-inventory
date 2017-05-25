@@ -1,3 +1,5 @@
+<div class="col-lg-8">
+
 <%= form_for user do |f|%>
 
 <%= render partial:"layouts/errors", locals: {record: user} %>
@@ -25,8 +27,10 @@
 <%= f.text_field :location %><br>
 <%= f.submit %><br>
 <% end %>
-
-
+</div>
+<div class="col-lg-4">
+<%= render "layouts/stats" %>
+</div>
 
 
 
