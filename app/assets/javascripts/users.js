@@ -13,7 +13,7 @@ $(".users.show").ready(function(){
 
     $('.details-link').on('click', function(event){
         event.preventDefault();
-        showOrHideDetails(event.target);
+        toggleDetails(event.target);
     })
 
     $('.delete-link').on('click', function(event){
@@ -37,7 +37,7 @@ function deleteRig(e){
     })
 }
 
-function showOrHideDetails(e){
+function toggleDetails(e){
     let id = e["dataset"]["id"]
     let $node = $("#panel-span-" + id)
     var text = e.text 
