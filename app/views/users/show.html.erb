@@ -11,8 +11,10 @@
     <div class="panel-heading" id="panel-heading-<%= rig.id %>">
         <h3 class="panel-title"><%= rig.name %></h3>
     </div>
+    <div class="panel-body">
     <p>Venue: <%= rig.venue %></p>
     <p>Use: <%= rig.use %></p>
+    </div>
     <span id="panel-span-<%= rig.id %>"></span>
     <div class="panel-footer">
         <%= link_to "Show Details", '#', {"data-id": rig.id, role: "button", class: "btn btn-default details-link"} %> <%= link_to "Edit", user_rig_path(current_user,rig), { role:"button", class: "btn btn-default"} %>

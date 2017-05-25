@@ -7,7 +7,13 @@ class Item < ApplicationRecord
 
     accepts_nested_attributes_for :rigs
 
-
+    def next_item
+        Item.where("id > ?", id).first || Item.first
+    end
+    def previous
+        Item.where("id < ?", id).first || Item.last
+    end
+    
     def rig_ids=(ids)
         ids.each do |id|
             if !id.empty?

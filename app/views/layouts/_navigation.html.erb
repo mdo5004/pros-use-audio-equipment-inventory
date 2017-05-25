@@ -16,8 +16,8 @@
             <ul class="nav navbar-nav">
                 <%=content_tag(:li, link_to("Home", root_path)) %>
                 <%=content_tag(:li, link_to("Profile", edit_user_path(current_user))) if current_user %>
-                <%=content_tag(:li, link_to("Rigs", rigs_path)) %>
-                <%=content_tag(:li, link_to("Equipment", items_path)) %>
+                <%=content_tag(:li, link_to("Rigs", rigs_path)) if current_user %>
+                <%=content_tag(:li, link_to("Equipment", items_path)) if current_user %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                <% if session[:user_id] %>

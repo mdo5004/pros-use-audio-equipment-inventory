@@ -10,7 +10,7 @@ function Item(id, name, manufacturer, classification, make, model, year, link){
 }
 
 $(".users.show").ready(function(){
-    alert("Users.js")
+    
     $('.details-link').on('click', function(event){
         event.preventDefault();
         let id = this["dataset"]["id"]
@@ -29,13 +29,11 @@ $(".users.show").ready(function(){
                 })
                 var source   = $("#list-template").html();
                 var template = Handlebars.compile(source);
-                //            debugger
-
                 $node.html(template({item: item_array}))    
             })
         } else {
             this.text = "Show Details";
-            $node.html('')    
+            $node.html('')
         }
     })
 })

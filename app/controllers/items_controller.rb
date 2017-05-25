@@ -1,6 +1,15 @@
 class ItemsController < ApplicationController
     before_action :require_login
     
+    def next_item
+        @item = Item.find(params[:id])
+        render json: @item.next_item
+    end
+    def prev
+        @item = Item.find(params[:id])
+        render json: @item.previous
+    end
+    
     def new
         @item = Item.new #Rig.find(params[:rig_id]).items.build
         authorize @item

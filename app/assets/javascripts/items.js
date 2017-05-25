@@ -1,69 +1,41 @@
-function Item(id, name, manufacturer, classification, make, model, year, link){
-    this.id = id;
-    this.name = name;
-    this.manufacturer = manufacturer;
-    this.classification = classification;
-    this.make = make;
-    this.model = model;
-    this.year = year;
-    this.link = link;
+function ListItem(new_item){
+    this.id = new_item.id
+    this.name = new_item.name
+    this.manufacturer = new_item.manufacturer
+    this.classification = new_item.classification
+    this.make = new_item.make
+    this.model = new_item.model
+    this.year = new_item.year
+    this.link = new_item.link
 }
-
-var n;
-var max;
+var id;
+var item;
 
 $('.items.show').ready(function(){
-    alert("Items.js")
-    n = parseInt($("#next").data("next")) - 1;
-    max = parseInt($("#next").data("max"));  
     attachListeners();
-    updateButtons();
+    id = history.state
+    //id = $("#edit").data("id")
 })
 
 function attachListeners(){
-    $(".nav-button").on('click',function(event){
+    $(document).on('click',".nav-button",function(event){
         event.preventDefault();
-        increment(event);
-        displayItemData(n);
+        switchItem(event);
     })
 }
 
-function increment(event){
-
-    var dir = event.target.id;
-    console.log(dir)
-    if (dir === "next"){
-        n = parseInt($("#next").data("next"));
-    } else if (dir === "prev") {
-        n = parseInt($("#prev").data("prev"));
-    }
-    console.log("n = " + n)   
-}
-
-function updateButtons(){
+function switchItem(event){
+    id = event.currentTarget.dataset.id;
+    let action = event.currentTarget.id;
     
-    if (n === 1){
-        $("#prev").hide();
-        $("#next").data("next", n + 1);
-    } else if (n === max) {
-        $("#prev").data("prev", n - 1);
-        $("#next").hide();
-    } else {
-        $("#prev").show();
-        $("#next").show();
-        $("#next").data("next", n + 1);
-        $("#prev").data("prev", n - 1);
-    }
-}
-
-function displayItemData(id){
-    $.getJSON('/items/' + id, function(json){
+    $.getJSON(`/items/${id}/${action}`, function(json){
+        console.log(json)
         var source = $('#table-template').html();
         var template = Handlebars.compile(source);
-        var item = new Item(json.id, json.name, json.manufacturer, json.classification, json.make, json.model, json.year, json.link)
+        
+        item = new ListItem(json)
         
         $('#item-table').html(template(item));
-    }).success(function(data){
-        updateButtons();
+        history.pushState(null, null,`/items/${id}`)
     })
 }
