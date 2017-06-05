@@ -6,7 +6,7 @@ class User < ApplicationRecord
     enum role: [:user, :moderator, :admin]
     
     has_secure_password
-    validates :name, :presence => true
+    validates :first_name, :presence => true
     validates :email, :presence => true
     validates :email, :uniqueness => true
     validates :password, :confirmation => true
@@ -15,5 +15,7 @@ class User < ApplicationRecord
     def my_equipment
         items.uniq 
     end
-    
+    def name
+        return "#{first_name} #{last_name}".strip 
+    end
 end

@@ -1,3 +1,12 @@
+function User(user){
+    this.id = user.id
+    this.firstName = user.first_name
+    this.lastName = user.last_name
+}
+User.prototype.name = function(){
+    return `${this.firstName} ${this.lastName}`
+}
+
 $(".users.show").ready(function(){
 
     $('.details-link').on('click', function(event){

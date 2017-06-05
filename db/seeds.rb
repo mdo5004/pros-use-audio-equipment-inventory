@@ -1,4 +1,4 @@
-michael = User.create(name: "Michael O'Connell", email:"michaeldavidoconnell@gmail.com", password:"password",password_confirmation:"password", role:2)
+michael = User.create(first_name: "Michael", last_name: "O'Connell", email:"michaeldavidoconnell@gmail.com", password:"password",password_confirmation:"password", role:2)
 home_rig = michael.rigs.create(name:"Home rig",venue:"Home",use:"Recording" )
 church_rig = michael.rigs.create(name:"Church rig",venue:"Church of the Good Shepherd, Durham NC",use:"Production")
 
@@ -27,7 +27,7 @@ church_rig.items.create(name:"Midas M3",
                     manufacturer:"Midas",
                     make:"M3",year:2016)
 
-ryan = User.create(name:"Ryan O'Connell", email:"ryan@ryanomusic.com", password:"password", role:0)
+ryan = User.create(first_name:"Ryan", last_name:"O'Connell", email:"ryan@ryanomusic.com", password:"password", role:0)
 home_rig = ryan.rigs.create(name:"Home rig", venue:"Home", use:"Recording")
 road_rig = ryan.rigs.create(name:"Road rig", venue:"Mobile", use:"Recording")
 home_rig.items << Item.find_or_create_by(name:"27\" iMac")
@@ -39,7 +39,7 @@ road_rig.items.create(name:"15\" MacBook Pro",
                     manufacturer:"Apple Inc.",
                     make:"MacBook Pro",year:2012)
 
-kyle = User.create(name:"kyle",email:"kyle@cgs.com",password:"password",role:0)
+kyle = User.create(first_name:"Kyle", last_name:"Osborne",email:"kyle@cgs.com",password:"password",role:0)
 home_rig = kyle.rigs.create(name:"Home rig", venue:"Home", use:"Recording")
 road_rig = kyle.rigs.create(name:"Road rig", venue:"Mobile", use:"Recording")
 home_rig.items << Item.find_by(name:"27\" iMac")
