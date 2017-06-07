@@ -39,10 +39,26 @@ road_rig.items.create(name:"15\" MacBook Pro",
                     manufacturer:"Apple Inc.",
                     make:"MacBook Pro",year:2012)
 
-kyle = User.create(first_name:"Kyle", last_name:"Osborne",email:"kyle@cgs.com",password:"password",role:0)
-home_rig = kyle.rigs.create(name:"Home rig", venue:"Home", use:"Recording")
-road_rig = kyle.rigs.create(name:"Road rig", venue:"Mobile", use:"Recording")
-home_rig.items << Item.find_by(name:"27\" iMac")
-home_rig.items << Item.find_by(name:"KORG SP-280")
-road_rig.items << Item.find_by(name:"Yeti Microphone")
-road_rig.items << Item.find_by(name:"27\" iMac")
+skrillex = User.create(first_name:"Skrillex", last_name:"",email:"sk@rillex.com",password:"password",role:0)
+home_rig = skrillex.rigs.create(name:"Studio Rig", venue:"Studio", use:"Recording")
+
+home_rig.items.create(name:"Focusrite Saffire PRO 14", 
+    classification:"Studio Equipment",
+    manufacturer:"Focusrite",
+    make:"Saffire PRO 14",
+    year:2016)
+home_rig.items.create(name:"Akai Professional MPK49 USB MIDI Keyboard", 
+    classification:"Synthesizer",
+    manufacturer:"Akai",
+    make:"MPK49",
+    year:2016)
+home_rig.items.create(name:"Native Instruments Maschine", 
+    classification:"Synthesizer",
+    manufacturer:"Native Instruments",
+    make:"Maschine",
+    year:2017)
+home_rig.items.create(name:"Sugar Bytes WOW 2", 
+    classification:"Software",
+    manufacturer:"Sugar Bytes",
+    make:"WOW 2",
+    year:2016)
