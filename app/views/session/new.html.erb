@@ -1,11 +1,13 @@
 <h1>Sign In</h1>
-
 <%= form_tag signin_path, method:"post" do %>
 <%= label_tag :email %><br>
 <%= text_field_tag :email %><br>
 <%= label_tag :password %><br>
-<%= password_field_tag :password %><br>
+<%= password_field_tag :password %><br><br>
 <%= submit_tag "Sign In" %><br>
 <% end %>
 
+<a href="/guest" id="guest-sign-in-button">Sign in as Guest</a>
 <br><%= render "session/facebook" %>
+
+

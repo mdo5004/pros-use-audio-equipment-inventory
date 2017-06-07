@@ -17,7 +17,7 @@ class SessionController < ApplicationController
             @user = User.find_by(email: session_params[:email])
             user_authenticated = @user.authenticate(session_params[:password])
         end
-        
+
         if @user && user_authenticated
             flash[:success] = "Successfully logged in!"
             session[:user_id] = @user.id
@@ -33,7 +33,18 @@ class SessionController < ApplicationController
         session[:user_id] = nil
         redirect_to root_path
     end
-
+    def guest
+        @user = User.find_by(email: "guest@user.com")
+        user_authenticated = @user.authenticate("password")
+        if @user && user_authenticated
+            flash[:success] = "Successfully logged in!"
+            session[:user_id] = @user.id
+            redirect_to root_path 
+        else
+            flash[:danger] = "Could not log in"
+            render :new 
+        end
+    end
     private
     def session_params
         params.permit(:email, :password)

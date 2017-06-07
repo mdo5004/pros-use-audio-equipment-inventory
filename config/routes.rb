@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     delete "/signout", to: "session#destroy"
     get "/signup", to: "users#new"
     get '/auth/facebook/callback', to: 'session#create'
-    
+    get '/guest', to: "session#guest"
     get '/items/:id/next', to: 'items#next_item'
     get '/items/:id/prev', to: 'items#prev'
     

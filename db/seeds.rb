@@ -1,3 +1,4 @@
+guest = User.create(first_name: "Guest", last_name: "User", email:"guest@user.com", password:"password", role:0)
 michael = User.create(first_name: "Michael", last_name: "O'Connell", email:"michaeldavidoconnell@gmail.com", password:"password",password_confirmation:"password", role:2)
 home_rig = michael.rigs.create(name:"Home rig",venue:"Home",use:"Recording" )
 church_rig = michael.rigs.create(name:"Church rig",venue:"Church of the Good Shepherd, Durham NC",use:"Production")
