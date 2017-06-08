@@ -26,7 +26,7 @@ function attachListeners(){
 
 function switchItem(event){
     id = event.currentTarget.dataset.id;
-    let action = event.currentTarget.id;
+    var action = event.currentTarget.id;
     debugger
     $.getJSON(`/items/${id}/${action}`, function(json){
         console.log(json)

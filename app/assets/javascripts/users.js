@@ -28,8 +28,8 @@ $(".users.show").ready(function(){
 
 function showAllRigs(e){
     $.getJSON('/rigs', function(data){
-        let $node = $("#rigs-index")
-        let rig_array = concatItems(data,Rig);
+        var $node = $("#rigs-index")
+        var rig_array = concatItems(data,Rig);
         
         var source   = $("#rigs-template").html();
         var template = Handlebars.compile(source);
@@ -41,7 +41,7 @@ function showAllRigs(e){
 }
 
 function deleteRig(e){
-    let id = e["dataset"]["id"]
+    var id = e["dataset"]["id"]
     $.ajax({
         url: `/rigs/${id}`,
         method: 'DELETE',
@@ -56,8 +56,8 @@ function deleteRig(e){
 }
 
 function toggleDetails(e){
-    let id = e["dataset"]["id"]
-    let $node = $("#panel-span-" + id)
+    var id = e["dataset"]["id"]
+    var $node = $("#panel-span-" + id)
     var text = e.text 
 
     if (text === "Show Details") {
@@ -67,7 +67,7 @@ function toggleDetails(e){
 
             var source   = $("#list-template").html();
             var template = Handlebars.compile(source);
-            let item_array = concatItems(data["items"],Item);
+            var item_array = concatItems(data["items"],Item);
             $node.html(template({item: item_array}))    
         })
     } else {
