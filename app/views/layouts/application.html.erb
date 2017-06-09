@@ -11,15 +11,13 @@
 
     </head>
 
-    <body>
-        <div class="container">
-            <%= render "layouts/navigation" %>
-        </div>
-        <div class="container">
+    <body class="with-top-navbar">
+        <div  class="growl" id="app-growl"></div>
+        <%= render "layouts/navigation" %>
+        
             <%= render "layouts/messages" %>
-        </div>
 
-        <div class="container <%= controller_name %> <%= action_name %>">
+        <div class="container <%= controller_name %> <%= action_name %> p-t-md">
             
                 <%= yield %>
             

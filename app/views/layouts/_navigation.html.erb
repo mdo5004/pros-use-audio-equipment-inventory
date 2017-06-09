@@ -1,26 +1,50 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Pros Use...</a>
-        </div>
+<nav class="navbar navbar-inverse navbar-fixed-top app-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to("Pros Use", root_path, html_options = {class: "navbar-brand"}) %>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-collapse-main">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <%=content_tag(:li, link_to("Home", root_path)) %>
-                <%=content_tag(:li, link_to("Profile", edit_user_path(current_user))) if current_user %>
-                <%=content_tag(:li, link_to("Rigs", rigs_path)) if current_user %>
-                <%=content_tag(:li, link_to("Equipment", items_path)) if current_user %>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-               <% if session[:user_id] %>
+        <ul class="nav navbar-nav hidden-xs">
+          <li class="active">
+            <%=content_tag(:li, link_to("Home", root_path)) %>
+          </li>
+          <li>
+            <%=content_tag(:li, link_to("Profile", edit_user_path(current_user))) if current_user %>
+          </li>
+          <li>
+            <%=content_tag(:li, link_to("Rigs", rigs_path)) if current_user %>
+          </li>
+           <li>
+            <%=content_tag(:li, link_to("Equipment", items_path)) if current_user %>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
+          <li>
+            <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
+              <%= image_tag "instagram_15.jpg" %>
+            </button>
+          </li>
+        </ul>
+
+        <form class="navbar-form navbar-right app-search" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" data-action="grow" placeholder="Search">
+          </div>
+        </form>
+
+        <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+          <li><%=content_tag(:li, link_to("Home", root_path)) %></li>
+          <li><%=content_tag(:li, link_to("Profile", edit_user_path(current_user))) if current_user %></li>
+          <li><%=content_tag(:li, link_to("Rigs", rigs_path)) if current_user %></li>
+          <li><% if session[:user_id] %>
                
                <%=content_tag(:li, link_to("Log Out", signout_path, method:"delete")) %>
                <% else %>
@@ -28,7 +52,13 @@
                <%=content_tag(:li, link_to("Sign Up", signup_path)) %>
                 
                 <% end %>
-            </ul>
-        </div>
-    </div>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav hidden">
+          <li><a href="#" data-action="growl">Growl</a></li>
+          <li><a href="login/index.html">Logout</a></li>
+        </ul>
+      </div>
+  </div>
 </nav>
