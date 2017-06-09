@@ -19,6 +19,9 @@
             <%=content_tag(:li, link_to("Profile", edit_user_path(current_user))) if current_user %>
           </li>
           <li>
+            <%=content_tag(:li, link_to("Pros", users_path)) if current_user %>
+          </li>
+           <li>
             <%=content_tag(:li, link_to("Rigs", rigs_path)) if current_user %>
           </li>
            <li>
@@ -29,7 +32,7 @@
         <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
           <li>
             <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
-              <%= image_tag "instagram_15.jpg" %>
+              <%= image_tag "kai-oberhauser-167204.jpg" %>
             </button>
           </li>
         </ul>

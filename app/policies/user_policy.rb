@@ -11,7 +11,7 @@ class UserPolicy < ApplicationPolicy
     end
     
     def index?
-        @viewer.admin? || @viewer.moderator?
+        @viewer.admin? || @viewer.moderator? || @user == @viewer
     end
     def show?
         @viewer.admin? || @viewer.moderator? || @user == @viewer

@@ -1,10 +1,17 @@
-<div>
-    <ul>
-    <li><%=user.name %> <%= "ADMIN" if user.admin? %></li>
-    <li>email: <%=user.email %></li>
-    <li>title: <%=user.title %></li>
-    <li>location: <%=user.location %></li>
-    <li><%= link_to "Edit", edit_user_path(user)%></li>
-    </ul>
-    
+<div class="panel panel-default panel-profile m-b-md">
+    <div class="panel-heading" style="background-image: '<%= image_path 'kai-oberhauser-167204.jpg' %>'"></div>
+    <div class="panel-body text-center">
+        <a href=<%= user_path(user) %>>
+            <%= image_tag("kai-oberhauser-167204.jpg", html_options = {class:"panel-profile-img"}) %>
+        </a>
+
+        <h5 class="panel-title">
+            <%= link_to(user.name, edit_user_path(user), html_options={class:"text-inherit"}) %>
+        </h5>
+
+        <p class="m-b-md"><%= user.title %></p>
+
+        <p><%= user.location %></p>
+        
+    </div>
 </div>
