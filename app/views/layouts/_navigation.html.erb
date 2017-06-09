@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to("Pros Use", root_path, html_options = {class: "navbar-brand"}) %>
+      <%= link_to("Pros Use...", root_path, html_options = {class: "navbar-brand"}) %>
     </div>
     <div class="navbar-collapse collapse" id="navbar-collapse-main">
 
@@ -44,6 +44,7 @@
           <li><%=content_tag(:li, link_to("Home", root_path)) %></li>
           <li><%=content_tag(:li, link_to("Profile", edit_user_path(current_user))) if current_user %></li>
           <li><%=content_tag(:li, link_to("Rigs", rigs_path)) if current_user %></li>
+          <li><%=content_tag(:li, link_to("Equipment", items_path)) if current_user %></li>
           <li><% if session[:user_id] %>
                
                <%=content_tag(:li, link_to("Log Out", signout_path, method:"delete")) %>

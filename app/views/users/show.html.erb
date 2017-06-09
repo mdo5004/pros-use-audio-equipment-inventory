@@ -3,28 +3,28 @@
 <div class="row">
     <div class="col-md-3">
         <div class="panel panel-default panel-profile m-b-md">
-        
-<div class="panel-heading" style="background-image: '<%= image_path 'instagram_15.jpg' %>'"></div>
-        <div class="panel-body text-center">
-          <a href="profile/index.html">
-           <%= image_tag("instagram_15.jpg", html_options = {class:"panel-profile-img"}) %>
-          </a>
 
-          <h5 class="panel-title">
-           <%= link_to(@user.name, edit_user_path, html_options={class:"text-inherit"}) %>
-            
-          </h5>
+            <div class="panel-heading" style="background-image: '<%= image_path 'instagram_15.jpg' %>'"></div>
+            <div class="panel-body text-center">
+                <a href="profile/index.html">
+                    <%= image_tag("instagram_15.jpg", html_options = {class:"panel-profile-img"}) %>
+                </a>
 
-          <p class="m-b-md"><%= @user.title %></p>
-            
-            <p><%= @user.location %></p>
-            <%= link_to "Edit Profile...", edit_user_path(@user) %>   
+                <h5 class="panel-title">
+                    <%= link_to(@user.name, edit_user_path, html_options={class:"text-inherit"}) %>
+
+                </h5>
+
+                <p class="m-b-md"><%= @user.title %></p>
+
+                <p><%= @user.location %></p>
+                <%= link_to "Edit Profile...", edit_user_path(@user) %>   
+            </div>
         </div>
-    </div>
     </div>
     <div class="col-lg-6">
 
-        
+
         <% @user.rigs.each do |rig| %>
 
         <div class="panel panel-default" id="panel-<%= rig.id %>">
@@ -52,7 +52,7 @@
         </script>
 
         <div id="rigs-index">
-            
+
             <a href="#" id="show-all-button" role="button" class="btn btn-default show-all-button">Show All</a>
         </div>
         <script id="rigs-template" type="text/x-handlebars-template">
