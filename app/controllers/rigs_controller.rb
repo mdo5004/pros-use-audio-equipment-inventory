@@ -27,7 +27,6 @@ class RigsController < ApplicationController
     end
     def create_from_user
        @rig = Rig.new(rig_params)
-        authorize @rig
         
         if @rig.save
             render json: @rig, :status => 201

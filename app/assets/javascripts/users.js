@@ -7,7 +7,9 @@ User.prototype.name = function(){
     return `${this.firstName} ${this.lastName}`
 }
 
-$(".users.show").ready(function(){
+$(".users.show").ready(attachClickHandlers)
+
+function attachClickHandlers(){
 
     $('.details-link').on('click', function(event){
         event.preventDefault();
@@ -24,18 +26,27 @@ $(".users.show").ready(function(){
         showAllRigs(event.target);
     })
 
-    
-})
-
+}
 $(function() {
     $('#new-rig-form').on('submit',function(event){
         event.preventDefault();
         var userId = this.dataset.userid;
         var values = $(this).serialize();
-        
+        $("#RigName").val("")
+        $("#RigVenue").val("")
+        $("#RigUse").val("")
         $.post(`/userrig`, values).done( data =>{
-            console.log(data);
+            var $node = $("#user-rigs-panels");
+            let rig = new Rig(data);
+            var source = $("#user-rig-template").html();
+            var template = Handlebars.compile(source);
+            $node.append(template(rig));
+            
         }).fail( data => console.log(data))
+        .done(function() {
+            attachClickHandlers()
+        });
+
     })
 })
 
@@ -43,12 +54,12 @@ function showAllRigs(e){
     $.getJSON('/rigs', function(data){
         var $node = $("#rigs-index")
         var rig_array = concatItems(data,Rig);
-        
+
         var source   = $("#rigs-template").html();
         var template = Handlebars.compile(source);
-        
+
         $node.html(template({rig: rig_array}))
-        
+
     })
     $("#show-all-button").text('Hide All')
 }

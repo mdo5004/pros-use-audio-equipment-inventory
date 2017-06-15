@@ -5,7 +5,7 @@
     </div>
     <div class="col-lg-6">
 
-
+    <div id="user-rigs-panels">
         <% @user.rigs.each do |rig| %>
 
         <div class="panel panel-default" id="panel-<%= rig.id %>">
@@ -24,7 +24,24 @@
             </div>
         </div>
         <% end %>
-
+    </div>
+        <script id="user-rig-template" type="text/x-handlebars-template">
+        <div class="panel panel-default" id="panel-{{id}}">
+            <div class="panel-heading" id="panel-heading-{{id}}">
+                <h3 class="panel-title">{{name}}</h3>
+            </div>
+            <div class="panel-body" id="panel-body-{{id}}">
+                <p>Venue: {{venue}}</p>
+                <p>Use: {{use}}</p>
+            </div>
+            <span id="panel-span-{{id}}"></span>
+            <div class="panel-footer" id="panel-footer-2">
+                <a data-id="{{id}}" role="button" class="btn btn-default details-link" href="#">Show Details</a> 
+                <a role="button" class="btn btn-default" href="/users/<%= @user.id %>/rigs/{{id}}">Edit</a>
+                <a data-id="{{id}}" role="button" class="btn btn-danger delete-link" href="#">Delete</a>
+            </div>
+        </div>
+        </script>
         <div class="panel panel-default">
           <div class="panel-heading" ><h4>New Rig</h4>
                </div>
