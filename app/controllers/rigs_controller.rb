@@ -16,6 +16,7 @@ class RigsController < ApplicationController
     def create
         @rig = Rig.new(rig_params)
         authorize @rig
+        
         if @rig.save
             redirect_to user_path(@rig.user)
         else
@@ -23,6 +24,16 @@ class RigsController < ApplicationController
             @rig.items.build
             render :new
         end
+    end
+    def create_from_user
+       @rig = Rig.new(rig_params)
+        authorize @rig
+        
+        if @rig.save
+            render json: @rig, :status => 201
+        else
+            render :status => 404
+        end 
     end
     def edit
         @rig = Rig.find(params[:id])

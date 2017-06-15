@@ -24,6 +24,19 @@ $(".users.show").ready(function(){
         showAllRigs(event.target);
     })
 
+    
+})
+
+$(function() {
+    $('#new-rig-form').on('submit',function(event){
+        event.preventDefault();
+        var userId = this.dataset.userid;
+        var values = $(this).serialize();
+        
+        $.post(`/userrig`, values).done( data =>{
+            console.log(data);
+        }).fail( data => console.log(data))
+    })
 })
 
 function showAllRigs(e){
