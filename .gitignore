@@ -21,8 +21,8 @@ config/secrets.yml
 .env
 
 ## Environment normalization:
-/.bundle
-/vendor/bundle
+##/.bundle
+##/vendor/bundle
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
