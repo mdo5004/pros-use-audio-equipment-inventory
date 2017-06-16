@@ -28,7 +28,7 @@ function switchItem(event){
     id = event.currentTarget.dataset.id;
     var action = event.currentTarget.id;
     debugger
-    $.getJSON(`/items/${id}/${action}`, function(json){
+    $.getJSON('/items/'+id+'/'+action, function(json){
         console.log(json)
         var source = $('#table-template').html();
         var template = Handlebars.compile(source);
@@ -36,7 +36,7 @@ function switchItem(event){
         item = new Item(json)
         
         $('#item-table').html(template(item));
-        history.pushState(null, null,`/items/${item.id}`)
+        history.pushState(null, null,"/items/"+item.id)
     }).fail(function(jqxhr,status,error){
         console.log(error)
     })

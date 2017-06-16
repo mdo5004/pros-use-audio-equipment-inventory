@@ -4,7 +4,7 @@ function User(user){
     this.lastName = user.last_name
 }
 User.prototype.name = function(){
-    return `${this.firstName} ${this.lastName}`
+    return (this.firstName + this.lastName)
 }
 
 $(".users.show").ready(attachClickHandlers)
@@ -32,23 +32,27 @@ $(function() {
         event.preventDefault();
         var userId = this.dataset.userid;
         var values = $(this).serialize();
-        $("#RigName").val("")
-        $("#RigVenue").val("")
-        $("#RigUse").val("")
-        $.post(`/userrig`, values).done( data =>{
-            var $node = $("#user-rigs-panels");
-            let rig = new Rig(data);
-            var source = $("#user-rig-template").html();
-            var template = Handlebars.compile(source);
-            $node.append(template(rig));
-            
-        }).fail( data => console.log(data))
-        .done(function() {
-            attachClickHandlers()
-        });
-
+        createUserRig(values)
     })
 })
+
+function createUserRig(values) {
+    $.post('/userrig', values)
+        .then(showNewUserRig)
+        .then(attachClickHandlers)
+        .catch(console.log)
+}
+
+function showNewUserRig(data) {
+    $("#RigName").val("")
+    $("#RigVenue").val("")
+    $("#RigUse").val("")
+
+    let rig = new Rig(data);
+    var source = $("#user-rig-template").html();
+    var template = Handlebars.compile(source);
+    $("#user-rigs-panels").append(template(rig));
+}
 
 function showAllRigs(e){
     $.getJSON('/rigs', function(data){
@@ -67,7 +71,7 @@ function showAllRigs(e){
 function deleteRig(e){
     var id = e["dataset"]["id"]
     $.ajax({
-        url: `/rigs/${id}`,
+        url: '/rigs/'+ id,
         method: 'DELETE',
         dataType: 'script',
         format: 'js'
