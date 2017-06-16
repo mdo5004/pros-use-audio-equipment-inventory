@@ -12,11 +12,11 @@ class ItemsController < ApplicationController
     
     def new
         @item = Item.new #Rig.find(params[:rig_id]).items.build
-        authorize @item
+#        authorize @item
     end
     def create
         @item = Item.find_or_initialize_by(name: item_params[:name])
-        authorize @item
+#        authorize @item
 
         @item.attributes= item_params 
 
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     end
     def update
         @item = Item.find(params[:id])
-        authorize @item
+#        authorize @item
 
         if @item.update_attributes(item_params)
             if item_params[:rig_id]
@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     end
     def show
         @item = Item.find(params[:id])
-        authorize @item
+#        authorize @item
         respond_to do |f|
             f.html { render :show }
             f.json { render json: @item }
@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
         if params[:rig_id]
             # user trying to remove an item from a rig
             @rig = Rig.find(params[:rig_id])
-            authorize @rig
+#            authorize @rig
             
             @item = Item.find(params[:id])
             @rig.items.delete(@item.id)
@@ -71,14 +71,14 @@ class ItemsController < ApplicationController
         else
             #user trying to destroy an item completely
             @item = Item.find(params[:id])
-            authorize @item
+#            authorize @item
             @item.destroy
             redirect_to request.referrer || root_path
         end
     end
     def index
         @items = Item.all
-        authorize @items
+#        authorize @items
     end
 
     private

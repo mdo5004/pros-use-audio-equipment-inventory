@@ -7,7 +7,7 @@ class RigPolicy < ApplicationPolicy
     end
     
     def update?
-        @viewer.admin? || @rig.user == @viewer
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     
     def index?
@@ -17,7 +17,7 @@ class RigPolicy < ApplicationPolicy
         @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def edit?
-        @viewer.admin? || @rig.user == @viewer
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def new?
         @viewer.admin? || @viewer.moderator? || @viewer.user?
@@ -26,6 +26,6 @@ class RigPolicy < ApplicationPolicy
         @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
     def destroy?
-        @viewer.admin? || @rig.user == @viewer
+        @viewer.admin? || @viewer.moderator? || @viewer.user?
     end
 end
