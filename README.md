@@ -2,7 +2,7 @@
 ## Audio Equipment Inventory
 
 # Demo
-[Check out the demo of Pros Use...](prosuse.herokuapp.com)
+[Check out the demo of Pros Use...](https://prosuse.herokuapp.com)
 
 # Project Outline
 This project has a simple setup involving Users, Rigs, and Items:
